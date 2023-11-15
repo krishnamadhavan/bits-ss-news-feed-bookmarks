@@ -15,7 +15,7 @@ class BookmarksSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Bookmarks
-        fields = ("content",)
+        fields = ("id", "content",)
 
     def validate(self, attrs):
         content_id = attrs["content"]
@@ -47,4 +47,7 @@ class BookmarksSerializer(serializers.ModelSerializer):
         if resp.status_code != 200:
             self.fail("invalid_content_id")
 
-        return resp.json()
+        return {
+            "id": value.id,
+            "content": resp.json()
+        }

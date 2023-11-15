@@ -3,6 +3,7 @@
 USE_DOCKER=yes
 REDIS_CACHE_EXPIRY=864000
 AUTH_SERVICE_URL=http://host.docker.internal:8000
+CONTENT_SERVICE_URL=http://host.docker.internal:8001
 
 # Database
 # ------------------------------------------------------------------------------

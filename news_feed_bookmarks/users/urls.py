@@ -8,6 +8,7 @@ app_name = "users"
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
 
+router.register("bookmarks", views.BookmarksViewSet, basename="bookmarks")
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [

@@ -6,17 +6,17 @@ User = get_user_model()
 
 class TestUserAdmin:
     def test_changelist(self, admin_client):
-        url = reverse("admin:users_user_changelist")
+        url = reverse("admin:auth_user_changelist")
         response = admin_client.get(url)
         assert response.status_code == 200
 
     def test_search(self, admin_client):
-        url = reverse("admin:users_user_changelist")
+        url = reverse("admin:auth_user_changelist")
         response = admin_client.get(url, data={"q": "admin_user"})
         assert response.status_code == 200
 
     def test_add(self, admin_client):
-        url = reverse("admin:users_user_add")
+        url = reverse("admin:auth_user_add")
         response = admin_client.get(url)
         assert response.status_code == 200
 
@@ -33,6 +33,6 @@ class TestUserAdmin:
 
     def test_view_user(self, admin_client):
         user = User.objects.get(username="admin")
-        url = reverse("admin:users_user_change", kwargs={"object_id": user.pk})
+        url = reverse("admin:auth_user_change", kwargs={"object_id": user.pk})
         response = admin_client.get(url)
         assert response.status_code == 200
